@@ -45,6 +45,8 @@ npm install nodemon
 
 node app.js 대신 쓸 수가 있다.
 
+매번 node를 쓰지 않아도 된다.
+
 추가 설정
 
 MySQL 서버가 재부팅 상관없이 켜져있게 한다.
