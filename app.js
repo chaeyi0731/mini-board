@@ -41,6 +41,13 @@ app.post('/create', (req, res) => {
     res.redirect('/');
   });
 });
+app.get('/posts', (req, res) => {
+  // 게시물 목록 가져오기
+  db.query('SELECT * FROM posts', (err, results) => {
+    if (err) throw err;
+    res.json(results); // JSON 형태로 응답
+  });
+});
 
 app.listen(port, () => {
   console.log(`서버가 http://localhost:${port} 에서 실행 중입니다.`);
