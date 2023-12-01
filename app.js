@@ -14,6 +14,7 @@ app.get('/', (req, res) => {
   // 게시물 목록 가져오기
   //  'posts' 테이블로부터 모든 데이터를 선택하는 쿼리를 실행하는 부분
   // SELECT * FROM posts 이 부분은 SQL SELECT 쿼리
+  // * SQl에서 SELECT 쿼리는 데이터를 읽는 작업
   // posts 테이블에서 모든 열(*은 모든 열을 나타냄)을 선택하라는 의미
   db.query('SELECT * FROM posts', (err, results) => {
     if (err) throw err;
@@ -57,7 +58,8 @@ app.post('/create', (req, res) => {
   // 추출한 title과 content를 사용하여 새로운 게시물 객체를 생성합니다. 이 객체는 데이터베이스에 저장될 내용을 담고 있다.
   const post = { title, content };
 
-  //데이터베이스에 새로운 게시물을 추가하는 SQL 쿼리를 실행
+  //데이터베이스에 새로운 게시물을 추가하는 SQL 쿼리를 실행 
+  //* INSERT는 생성하는 SQL 쿼리 
   db.query('INSERT INTO posts SET ?', post, (err, result) => {
     if (err) throw err;
     console.log('게시물이 성공적으로 작성되었습니다.');
@@ -69,6 +71,7 @@ app.get('/posts', (req, res) => {
   // 게시물 목록 가져오기
 
   // 'posts' 테이블에서 모든 열을 선택하는 쿼리
+
   db.query('SELECT * FROM posts', (err, results) => {
     if (err) throw err;
     res.json(results); // JSON 형태로 응답
